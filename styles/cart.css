@@ -1,0 +1,79 @@
+ #cart {
+     background-image: url("./../assets/texture-wood.jpg");
+     width: 80%;
+     margin: auto;
+     border: 5px solid var(--theme-color-secondary);
+ }
+
+ #cart-items {
+     display: flex;
+     flex-direction: column;
+     overflow: auto;
+     max-height: 70vh;
+ }
+
+ .item {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     column-gap: 1rem;
+ }
+
+ .item .image-container {
+     flex: 1 1 150px;
+     min-width: 150px;
+     height: auto;
+     padding: 1rem;
+ }
+
+ .item .image-container img {
+     width: 60%;
+     aspect-ratio: 1 / 1;
+     display: inline-block;
+     margin: auto;
+ }
+
+ .item .price,
+ .item .description {
+     flex: 2 2 150px;
+     color: white;
+     font-family: var(--theme-font-accent);
+     text-shadow: 1px 1px black;
+ }
+
+ .item .price {
+     text-align: center;
+ }
+
+ #cart-details {
+     display: flex;
+     flex-direction: row;
+     border-top: 3px solid var(--theme-color-primary);
+ }
+
+ #cart-total-label {
+     flex: 1 1 150px;
+     text-align: right;
+     color: white;
+ }
+
+ #cart-total-amount {
+     flex: 0 0 150px;
+     color: white;
+ }
+
+ #btn-checkout {
+     background-color: var(--theme-color-primary);
+     border: none;
+     font-family: var(--theme-font-accent);
+     padding: 0.8rem 1rem;
+     display: block;
+     width: 100%;
+ }
+
+ #empty-cart-message {
+    color: white;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+ }

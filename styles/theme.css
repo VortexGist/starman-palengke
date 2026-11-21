@@ -1,0 +1,187 @@
+/******* CONSTANTS *****/
+
+:root {
+    --theme-color-primary: rgb(255, 243, 205);
+    --theme-color-secondary: rgb(173, 107, 20);
+    --theme-color-primary-hover: rgb(255, 229, 189);
+    --theme-color-secondary-hover: rgb(133, 82, 16);
+    --theme-font-content: Arial, sans-serif;
+    --theme-font-accent: 'Franklin Gothic Medium', 'Arial Narrow', sans-serif;
+}
+
+/******* DEFAULTS *****/
+
+* {
+    font-family: var(--theme-font-accent);
+}
+
+p {
+    font-family: var(--theme-font-content);
+}
+
+body {
+    margin: 0px;
+    background-image: url("./../assets/bg-home.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
+main {
+    background-color: rgba(255, 255, 255, 0.61);
+    padding-bottom: 120px;
+    padding-top: 1rem;
+}
+
+/******* COMPONENTS *****/
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    background-color: var(--theme-color-secondary);
+    padding: 0.8rem;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1rem;
+}
+
+.product-box {
+    background-image: url("./../assets/texture-wood.jpg");
+    background-size: cover;
+    border: 10px solid rgb(129, 61, 21);
+    box-sizing: border-box;
+}
+
+.flex .card {
+    background-color: var(--theme-color-primary);
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.flex .card .price {
+    text-align: right;
+}
+
+.flex .card img {
+    width: 200px;
+    height: 200px;
+    aspect-ratio: 1 / 1;
+}
+
+.centered {
+    margin: auto;
+}
+
+/******* LAYOUT *****/
+
+nav ul {
+    display: inline-flex;
+    list-style: none;
+    width: 50%;
+    margin: 0px;
+    margin-left: 2rem;
+    padding: 0px;
+}
+
+nav ul li {
+    display: inline-block;
+    flex: 0 1 100px;
+}
+
+nav ul a {
+    display: inline-block;
+    font-style: none;
+    text-decoration: none;
+    color: black;
+    font-family: var(--theme-font-accent);
+    padding: 1rem;
+}
+
+header {
+    width: 100%;
+}
+
+header .flex {
+    align-items: center;
+    background-color: none;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 0px;
+    background-color: var(--theme-color-primary);
+}
+
+#title {
+    text-align: right;
+    display: inline-block;
+    width: 50%;
+    margin: 0px;
+    margin-right: 1.5rem;
+}
+
+footer {
+    background-color: var(--theme-color-primary);
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}
+
+footer .copyright {
+    text-align: center;
+}
+
+/******* HOVER EFFECTS *****/
+
+/* product-page.php */
+#product-quantity-controls button,
+#transaction-buttons button,
+/* cart.php */
+#btn-checkout:hover,
+/* index.php */
+#product-branches .card:hover,
+
+#categories .btn-change-category:hover,
+nav ul li:hover,
+.product-box .card:hover {
+    background-color: var(--theme-color-primary-hover);
+}
+
+/* product-page.php */
+.flex .card .btn-add-to-cart:hover {
+    color: var(--theme-color-primary);
+}
+
+/* product-page.php */
+#similar-products .card img:hover,
+/* components */
+.flex .card img:hover {
+    box-sizing: border-box;
+    border: 1px solid black;
+    /* transform: scale(1.05); */
+    /* background-clip: border-box; */
+}
+
+/* product-page.php */
+#similar-products .card img:hover,
+#product-quantity-controls button,
+#transaction-buttons button,
+/* cart.php */
+#btn-checkout:hover,
+/* index.php */
+#product-branches .card:hover,
+/* products.php */
+#categories .btn-change-category:hover,
+/* components */
+nav ul li:hover,
+.flex .card .btn-add-to-cart:hover,
+.flex .card img:hover {
+    cursor: pointer;
+}
+
+/******* TOAST *****/

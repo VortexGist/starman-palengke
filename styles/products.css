@@ -1,0 +1,55 @@
+#categories {
+    display: flex;
+    background-color: var(--theme-color-primary);
+    margin: auto;
+    justify-content: center;
+    width: fit-content;
+    list-style: none;
+    padding: 0px;
+    margin-bottom: 2rem;
+}
+
+#categories li {
+    display: inline-block;
+}
+
+/* #categories li a {
+    font-style: none;
+    text-decoration: none;
+    color: black;
+} */
+
+#categories li form,
+.flex .card form {
+    width: 100%;
+}
+
+#categories li .btn-change-category,
+.flex .card .btn-add-to-cart {
+    background-color: var(--theme-color-secondary);
+    border: none;
+    font-family: var(--theme-font-accent);
+    padding: 0.8rem 1rem;
+    display: block;
+    width: 100%;
+}
+
+
+#categories li .btn-change-category {
+    background-color: var(--theme-color-primary);
+    padding: 1.3rem 2rem;
+}
+
+.btn-goto-product-page {
+    width: fit-content;
+    height: fit-content;
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* .flex .card button a {
+    text-decoration: none;
+    color: black;
+} */

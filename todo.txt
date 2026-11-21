@@ -1,0 +1,59 @@
+[/] fonts
+[/] cart page
+    [/] design
+    [/] layout
+    [/] content
+[/] about page
+    [/] design
+    [/] layout
+    [/] content
+[/] hover effects
+[/] products page
+[/] home page
+[/] product pages
+    [/] layout and design
+[/] foooter
+
+MAIN FEATURES:
+[] database
+[] database utilities
+[] toast messages
+[/] products page
+    [/] product card generation
+[] product page
+    [/] "add to cart" function
+    [] "buy now" function
+    [/] auto-generate similar items function
+[] cart page
+    [] checkout function
+    [] add "view product" button
+        [] function
+        [] letter "I" for "info"
+    [] add "remove from cart" button
+        [] function
+        [/] letter "X" for "remove"
+    [/] add cart item quantity column
+    [] add button to clear cart items
+    [/] item total calculations
+[] checkout page
+    [/] layout
+    [/] design
+    [/] content
+    [] function
+
+FIXES:
+[] index page
+    [] restructure product branches into forms
+
+IMPROVEMENTS:
+[/] make navigation and buttons have larger click area
+[/] add button feedback
+[] replace product images with better quality
+[] add image scale-up effect when hovering product cards
+[] add pagination or scrolling similar items in product page
+
+PROPOSALS:
+[] user login
+[/] product descriptions
+[] admin page
+[] inventory page

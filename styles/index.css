@@ -1,0 +1,25 @@
+#product-branches {
+    width: 50%;
+    margin: auto;
+    padding: 1rem;
+    background: none;
+    background-image: url("./../assets/texture-wood.jpg");
+}
+
+#product-branches .flex .name {
+    text-align: center;
+    margin: 0px;
+}
+
+#product-branches .flex {
+    margin: auto;
+    background: none;
+}
+
+#product-branches .card {
+    background-color: none;
+}
+
+#product-branches .heading {
+    color: white;
+}
