@@ -194,6 +194,57 @@ $_SESSION['last-page'] = 'checkout';
         #order-total {
             border-top: 1px solid black;
         }
+
+
+        /* ====== Here's the changes I made ======= */   
+        
+        /* @media screen and (max-width: 768px) {
+            #checkout-container {
+                flex-direction: column;
+            }
+
+            #customer-info, #order-summary {
+                width: 100%;
+                border: none;
+                border-radius: 20px;
+            }
+        }
+            #checkout-container {
+                border: 1px solid black;
+                width: 80%;
+                margin: auto;
+                display: flex;
+                justify-content: space-around;
+                gap: 1rem;
+            }
+
+            #customer-info,
+        #order-summary {
+            width: 100%;
+        }
+
+        #summary-items .item {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #summary-items .item .image-container 
+        #summary-items .item .image-container img {
+            width: 80px;
+            height: 80px;
+        }
+
+        #summary-items .item .p {
+            max-width: 80px;
+            margin: 0.25rem 0;
+        }
+
+        #customer-info-form-container form {
+            width: 100%;
+            padding: 1rem;
+           } */
+            
+        
     </style>
 </head>
 
