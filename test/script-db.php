@@ -73,11 +73,18 @@ class DB
         ]);
     }
 
-    public static function addProduct(string $name, float $price)
-    {
-        $query     = "INSERT IGNORE INTO products (name, price) VALUES (?, ?)";
+    public static function addProduct(
+        string $name,
+        string $category,
+        float $price,
+        string $priceUnit,
+        int $quantity,
+        string $image,
+        string $description) {
+        $query     = "INSERT IGNORE INTO products (name, category, price, price_unit, quantity, image, description) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $statement = DB::getConnection()->prepare($query);
-        $statement->bind_param("sd", $name, $price);
+        $statement->bind_param("ssdsiss", $name, $category, $price, $price_unit, $quantity, $image, $description);
+        $statement->execute();
     }
 
     public static function getProductByID(int $id)
@@ -85,6 +92,7 @@ class DB
         $query     = "SELECT * FROM products WHERE id=?;";
         $statement = DB::getConnection()->prepare($query);
         $statement->bind_param("i", $id);
+        $statement->execute();
     }
 
     public static function removeProductByID(int $id)
@@ -92,6 +100,7 @@ class DB
         $query     = "DELETE FROM products WHERE id=?;";
         $statement = DB::getConnection()->prepare($query);
         $statement->bind_param("i", $id);
+        $statement->execute();
     }
 
     public static function getProductByName(string $name)
@@ -99,6 +108,7 @@ class DB
         $query     = "SELECT * FROM products WHERE name=?;";
         $statement = DB::getConnection()->prepare($query);
         $statement->bind_param("s", $name);
+        $statement->execute();
     }
 
     public static function removeProductByName(string $name)
@@ -106,6 +116,7 @@ class DB
         $query     = "DELETE FROM products WHERE name=?;";
         $statement = DB::getConnection()->prepare($query);
         $statement->bind_param("s", $name);
+        $statement->execute();
     }
 }
 
