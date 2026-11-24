@@ -1,6 +1,6 @@
 <?php
 
-require_once './../core/script-env.php';
+include_once './../core/script-env.php';
 
 /* ================ Database API ================ */
 
@@ -43,8 +43,6 @@ class DB
 
         // remove last comma
         $tableColumns = rtrim($tableColumns, ", ");
-
-        // echo "CREATE TABLE IF NOT EXISTS $tableName(" . $tableColumns . ');';
 
         $status = DB::getConnection()->query("CREATE TABLE IF NOT EXISTS $tableName(" . $tableColumns . ');');
 
