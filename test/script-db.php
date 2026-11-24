@@ -73,6 +73,17 @@ class DB
         ]);
     }
 
+    /**
+     * Inserts product table row
+     *
+     * @param name
+     * @param category
+     * @param price
+     * @param priceUnit
+     * @param quantity
+     * @param image - file name of image including file extension
+     * @param description
+     */
     public static function addProduct(
         string $name,
         string $category,
