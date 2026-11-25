@@ -14,6 +14,11 @@ $_SESSION['last-page'] = 'checkout';
     <title>Check Out | Starman Palengke</title>
     <link rel="stylesheet" href="./styles/theme.css">
     <style>
+
+        * {
+            box-sizing: border-box;
+               }
+
         #checkout-container {
             border: 1px solid black;
             width: 80%;
@@ -195,12 +200,15 @@ $_SESSION['last-page'] = 'checkout';
             border-top: 1px solid black;
         }
 
-
-        /* ====== Here's the changes I made ======= */   
-        
-        /* @media screen and (max-width: 768px) {
+         @media screen and (max-width: 768px) {
             #checkout-container {
                 flex-direction: column;
+                 border: 1px solid black;
+                width: 95%;
+                margin: auto;
+                display: flex;
+                justify-content: space-around;
+                gap: 1rem;
             }
 
             #customer-info, #order-summary {
@@ -208,15 +216,7 @@ $_SESSION['last-page'] = 'checkout';
                 border: none;
                 border-radius: 20px;
             }
-        }
-            #checkout-container {
-                border: 1px solid black;
-                width: 80%;
-                margin: auto;
-                display: flex;
-                justify-content: space-around;
-                gap: 1rem;
-            }
+        
 
             #customer-info,
         #order-summary {
@@ -228,7 +228,7 @@ $_SESSION['last-page'] = 'checkout';
             justify-content: center;
         }
 
-        #summary-items .item .image-container 
+        #summary-items .item .image-container, 
         #summary-items .item .image-container img {
             width: 80px;
             height: 80px;
@@ -242,9 +242,10 @@ $_SESSION['last-page'] = 'checkout';
         #customer-info-form-container form {
             width: 100%;
             padding: 1rem;
-           } */
-            
-        
+            box-sizing: border-box;
+           }
+        }
+
     </style>
 </head>
 
