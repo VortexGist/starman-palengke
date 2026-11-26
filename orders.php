@@ -19,6 +19,9 @@ require_once './core/script-init.php';
     <?php generateHeader(); ?>
     <main>
         <h1>Pending Orders</h1>
+        <?php
+            
+        ?>
     </main>
     <?php generateFooter(); ?>
 </body>

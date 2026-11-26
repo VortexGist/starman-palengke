@@ -115,18 +115,24 @@ class DB
             'password' => 'VARCHAR(255) NOT NULL',
             'role'     => 'enum(\'customer\', \'admin\')',
         ]);
+        DB::createTableIfNotExists('customers', [
+            'id'               => 'INT PRIMARY KEY AUTO_INCREMENT',
+            'name'             => 'VARCHAR(255) NOT NULL',
+            'delivery_method'  => 'enum(\'cod\', \'credit\')',
+            'delivery_address' => 'VARCHAR(255) NOT NULL',
+            'contact_number'   => 'VARCHAR(255)',
+            'contact_email'    => 'VARCHAR(255)',
+        ]);
         DB::createTableIfNotExists('orders', [
-            'id'           => 'INT PRIMARY KEY AUTO_INCREMENT',
-            'product'      => 'VARCHAR(255) NOT NULL UNIQUE',
-
-            'total_amount' => 'INT',
+            'id'               => 'INT PRIMARY KEY AUTO_INCREMENT',
+            'customer_id'      => 'VARCHAR(255) NOT NULL',
+            'total_amount'     => 'INT',
         ]);
         DB::createTableIfNotExists('order_items', [
             'id'         => 'INT PRIMARY KEY AUTO_INCREMENT',
-            'order_id'   => 'VARCHAR(255) NOT NULL UNIQUE',
+            'order_id'   => 'VARCHAR(255) NOT NULL',
             'product_id' => 'INT',
-            'quantity'   => 'VARCHAR(255)',
-            'role'       => 'enum(\'customer\', \'admin\')',
+            'quantity'   => 'INT',
         ]);
 
 
@@ -190,6 +196,18 @@ class DB
         }
     }
 
+    public static function getAccounts() {
+        $query = "SELECT * FROM accounts;";
+        $statement = DB::getConnection()->prepare($query);
+        $statement->execute();
+        $result = $statement->get_result();
+        $rows   = [];
+        while ($row = $result->fetch_assoc()) {
+            array_push($rows, $row);
+        }
+        return $rows;
+    }
+
     public static function getAccountByID() {
 
     }
@@ -249,7 +267,7 @@ class DB
     /**
      * Retrieves products
      */
-    public static function getProducts(string $category)
+    public static function getProducts(string|null $category)
     {
         $query = "SELECT * FROM products;";
         if ($category !== null) {
