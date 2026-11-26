@@ -5,29 +5,30 @@
  * 
  * @param array $categoryProducts
  * @param int $itemCount
- * @param int $excludedIndex
+ * @param int $excludedID
  * @return array
  */
-function generateSimilarItemIndices(array $categoryProducts, int $itemCount, int $excludedIndex): array
+function generateSimilarItemIDs(array $categoryProducts, int $itemCount, int $excludedID): array
 {
     $chosenItemsIndices = [];
+    $chosenItemsIDs = [];
     $categorySize = sizeof($categoryProducts);
 
-    // var_dump($excludedIndex);
+    // var_dump($excludedID);
 
     // No similar items to show
     if ($categorySize === 1) {
-        return $chosenItemsIndices;
+        return $chosenItemsIDs;
     }
 
     // Check if only 2 items and pick either one to avoid while-loop crashing
     if ($categorySize === 2) {
-        if ($excludedIndex === 0) {
-            array_push($chosenItemsIndices, 1);
+        if ($excludedID === $categoryProducts[0]['id']) {
+            array_push($chosenItemsIDs, $categoryProducts[1]['id']);
         } else {
-            array_push($chosenItemsIndices, 0);
+            array_push($chosenItemsIDs, $categoryProducts[0]['id']);
         }
-        return $chosenItemsIndices;
+        return $chosenItemsIDs;
     }
 
     $count = $itemCount;
@@ -40,11 +41,19 @@ function generateSimilarItemIndices(array $categoryProducts, int $itemCount, int
     // Randomly pick specified count of items
     for ($i = 0; $i < $count; $i++) {
         $index = random_int(0, $categorySize - 1);
-        while (in_array($index, $chosenItemsIndices, true) || $index === $excludedIndex) {
+
+        // Repeat while index already exists or the product of index is the excluded ID  
+        while (in_array($index, $chosenItemsIndices, true) || $categoryProducts[$index]['id'] === $excludedID) {
             $index = random_int(0, $categorySize - 1);
         }
+        
         array_push($chosenItemsIndices, $index);
     }
 
-    return $chosenItemsIndices;
+    // Convert those indices into IDs
+    foreach ($chosenItemsIndices as $index) {
+        array_push($chosenItemsIDs, $categoryProducts[$index]['id']);
+    }
+
+    return $chosenItemsIDs;
 }
