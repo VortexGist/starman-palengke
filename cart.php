@@ -1,21 +1,23 @@
 <?php
-require_once './core/script-page-gen.php';
-require_once './core/script-products.php';
-require_once './core/script-cart.php';
-require_once './core/script-session.php';
-require_once './core/script-util.php';
+    require_once './core/script-init.php';
+    require_once './core/script-cart.php';
+    // require_once './core/script-page-gen.php';
+    // // require_once './core/script-products.php';
+    // require_once './core/script-cart.php';
+    // require_once './core/script-session.php';
+    // require_once './core/script-util.php';
+    // session_destroy();
 
+    $_SESSION['last-page'] = 'cart';
 
-
-$_SESSION['last-page'] = 'cart';
-
-if (isset($_POST['action-products'])) {
-    if ($_POST['action-products'] === 'add-to-cart') {
-        addToCart($products[$_POST['product-category']][(int) $_POST['product-index']], 1);
-
-        // toast '<name> added to cart!' message here
-    }
-}
+    // if ($_SERVER['http-request-method'] === 'POST') {
+    //     if (isset($_POST['action-products'])) {
+    //         if ($_POST['action-products'] === 'add-to-cart') {
+    //             addToCart((int) $_POST['product-id'], 1);
+    //             // toast '<name> added to cart!' message here
+    //         }
+    //     }
+    // }
 
 ?>
 <!DOCTYPE html>
@@ -35,50 +37,47 @@ if (isset($_POST['action-products'])) {
         <h1>Your Cart</h1>
         <div id="cart">
             <?php
-            if (sizeof($_SESSION['cart']) === 0) {
-            ?>
+                if (sizeof($_SESSION['cart']) === 0) {
+                ?>
                 <p id="empty-cart-message">The cart is empty. Check out the products and try adding them to the cart. </p>
             <?php
-            } ?>
+            }?>
+
+            <form method="POST" action="./checkout.php">
             <div id="cart-items">
                 <?php
-                $totalCost = 0;
+                    $total = 0.0;
 
-                foreach ($_SESSION['cart'] as $item) {
-                    if ($item === null) continue;
-                    $product = $item->product;
-                    if ($product === null) continue;
-
-                    // calculate total
-                    $totalCost += $product->price;
-                ?>
+                    foreach ($_SESSION['cart'] as $i => $item) {
+                        // calculate total
+                        $product  = DB::getProductByID($item->productID);
+                        $total   += (float) $product['price'] * $item->quantity;
+                    ?>
                     <div class="item">
-                        <div class="image-container"><img src="./assets/<?= $product->image ?>"></div>
-                        <p class="description"><?= $product->name; ?></p>
-                        <p class="price"><?= number_format($product->price, 2); ?>
-                            PHP/<?= $product->priceUnit; ?></p>
+                        <div class="image-container"><img src="./assets/<?php echo $product['image'] ?>"></div>
+                        <p class="description"><?php echo $product['name']; ?></p>
+                        <p class="price"><?php echo number_format($product['price'], 2); ?>
+                            PHP/<?php echo $product['price_unit']; ?></p>
                         <div class="quantity-controls">
-                            <button class="btn-add-item-quantity">+</button>
-                            <p>1</p>
-                            <button class="btn-subtract-item-quantity">-</button>
+                            <input class="input-item-quantity" type="number" name="item-quantity-<?= $i ?>" min="1" value="<?= $item->quantity ?? 1 ?>">
                         </div>
                         <p class="subtotal">
-                            <?= $product->price * $item->quantity; ?> PHP
+                            <?php echo (float) $product['price'] * $item->quantity; ?> PHP
                         </p>
-                        <button class="btn-remove-item">REMOVE</button>
+                        <button class="btn-remove-item" type="submit" name="remove-item-id" value="<?= $item->productID?>" formaction="./core/action-remove-cart-item.php">REMOVE</button>
                     </div>
-                <?php } ?>
+                <?php
+                    }
+                ?>
             </div>
             <div id="cart-details">
                 <div id="cart-total-label">
                     <p>TOTAL:</p>
                 </div>
                 <div id="cart-total-amount">
-                    <p><?= number_format($totalCost, 2); ?> PHP</p>
+                    <p><?php echo number_format($total, 2); ?> PHP</p>
                 </div>
             </div>
-            <form method="POST" action="./checkout.php">
-
                 <button id="btn-checkout" type="submit">CHECKOUT</button>
             </form>
         </div>

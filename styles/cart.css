@@ -41,6 +41,13 @@
      text-shadow: 1px 1px black;
  }
 
+.item .subtotal,
+.quantity-controls p {
+     color: white;
+     font-family: var(--theme-font-accent);
+     text-shadow: 1px 1px black;
+}
+
  .item .price {
      text-align: center;
  }
