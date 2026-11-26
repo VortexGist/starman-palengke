@@ -14,6 +14,7 @@ try {
 	$username = $_POST['user-name'];
 	$password = $_POST['user-password'];
 	$confirmPassword = $_POST['user-confirm-password'];
+	$role = 'customer';
 
 	if ($confirmPassword !== $password) {
 		$_SESSION['error']['message'] = 'Password and confirm password must match';
@@ -23,10 +24,10 @@ try {
 
 	$hashPassword = password_hash($password, PASSWORD_DEFAULT);
 
-	$sql = 'INSERT INTO accounts (username, password) VALUES (?, ?)';
+	$sql = 'INSERT INTO accounts (username, password, role) VALUES (?, ?, ?)';
 	$mysql = DB::getConnection();
 	$statement = $mysql->prepare($sql);
-	$statement->bind_param("ss", $username, $hashPassword);
+	$statement->bind_param("sss", $username, $hashPassword, $role);
 
 	if (!$statement->execute()) {
 		$_SESSION['error']['message'] = 'SIGNUP ERROR';

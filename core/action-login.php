@@ -40,6 +40,7 @@ try {
 
 	$_SESSION['user']['id'] = $user['id'];
 	$_SESSION['user']['name'] = $user['username'];
+	$_SESSION['user']['role'] = $user['role'];
 	$_SESSION['success']['message'] = 'Login successfully';
 
 	header('Location: /'.PROJECT_FOLDER.'account.php');
