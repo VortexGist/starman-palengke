@@ -2,38 +2,6 @@
     require_once './core/script-init.php';
     require_once "./core/script-product-page.php";
     require_once "./core/script-cart.php";
-    // require_once "./core/script-session.php";
-    // require_once "./core/script-page-gen.php";
-    // // require_once "./core/script-products.php";
-
-    // if (
-    // $_SESSION['last-page'] !== 'product-page'
-    // || (isset($_POST['action-product-page'])
-    //     && $_POST['action-product-page'] === 'similar-item')
-    // ) {
-    // deleteCache('product-page', 'indices');
-    // }
-
-    // Check if product exists in cart
-    // if (cartContainsItem($_POST['product-name'])) {
-    //     $_
-    // }
-    // if (
-    //     $_SESSION['last-page'] !== 'product-page'
-    //     || (isset($_POST['action-product-page'])
-    //         && $_POST['action-product-page'] === 'similar-item')
-    // ) {
-    //     // echo $_SESSION['last-page'];
-    //     deleteCache('product-page', 'indices');
-
-    //     // deleteCache('product-page', 'image');
-    //     // deleteCache('product-page', 'name');
-    //     // deleteCache('product-page', 'price');
-    //     // deleteCache('product-page', 'category');
-    //     // deleteCache('product-page', 'description');
-    //     // deleteCache('product-page', 'index');
-    //     // deleteCache('product-page', 'price-unit');
-    // }
 
     $_SESSION['last-page'] = 'product-page';
 
@@ -41,11 +9,7 @@
         $_SESSION['product']['product-id'] = $_POST['product-id'];
     }
 
-    // $_SESSION['item-quantity'] = 0;
-
     $addToCartText = $_SESSION['add-to-cart']['button-content'] ?? 'ADD TO CART';
-
-
 
     $product = DB::getProductByID((int) $_SESSION['product']['id']);
 
@@ -55,69 +19,6 @@
         $_SESSION['add-to-cart']['button-content'] === 'ADDED TO CART') {
         $buttonDisabled = 'disabled';
     }
-    
-    // function setCaches()
-    // {
-    //     // $GLOBALS['productID'] = (int) $_POST['product-id'];
-    //     // $GLOBALS['product_image'] = $_POST['product-image'];
-    //     // $GLOBALS['product_name'] = $_POST['product-name'];
-    //     // $GLOBALS['product_price'] = (float) $_POST['product-price'];
-    //     // $GLOBALS['product_description'] = $_POST['product-description'];
-    //     // $GLOBALS['product_category'] = $_POST['product-category'];
-    //     // $GLOBALS['product_index'] = (int) $_POST['product-index'];
-    //     // $GLOBALS['product_price_unit'] = $_POST['product-price-unit'];
-
-    //     // setCacheValue('product-page', 'product-id', $GLOBALS['productID']);
-    //     // setCacheValue('product-page', 'image', $GLOBALS['product_image']);
-    //     // setCacheValue('product-page', 'name', $GLOBALS['product_name']);
-    //     // setCacheValue('product-page', 'price', $GLOBALS['product_price']);
-    //     // setCacheValue('product-page', 'category', $GLOBALS['product_category']);
-    //     // setCacheValue('product-page', 'index', $GLOBALS['product_index']);
-    //     // setCacheValue('product-page', 'description', $GLOBALS['product_description']);
-    //     // setCacheValue('product-page', 'price-unit', $GLOBALS['product_price_unit']);
-    // }
-
-    // function retrieveCaches()
-    // {
-    //     // Use cached values
-    //     // $GLOBALS['product_id'] = (int) getCacheValue('product-page', 'product-id');
-    //     // $GLOBALS['product_image'] = getCacheValue('product-page', 'image');
-    //     // $GLOBALS['product_name'] = getCacheValue('product-page', 'name');
-    //     // $GLOBALS['product_price'] = (float) getCacheValue('product-page', 'price');
-    //     // $GLOBALS['product_category'] = getCacheValue('product-page', 'category');
-    //     // $GLOBALS['product_description'] = getCacheValue('product-page', 'description');
-    //     // $GLOBALS['product_index'] = (int) getCacheValue('product-page', 'index');
-    //     // $GLOBALS['product_price_unit'] = getCacheValue('product-page', 'price-unit');
-    // }
-
-    // if (isset($_POST['action-product-page'])) {
-    //     // if ($_POST['action-product-page'] === 'add-to-cart') {
-    //         // addToCart($products[$_POST['product-category']][(int) $_POST['product-index']], 1);
-    //         // addToCart((int) $_POST['product-id'], 1);
-    //         // $addToCartText = 'ITEM ADDED TO CART';
-    //         // $_SESSION['flag-added-to-cart'] = true;
-    //         // echo "item added to cart";
-    //         // Use cached values
-    //         // retrieveCaches();
-
-    //         // echo "SET CACHE SIMILAR ITEMS";
-    //         // toast '<name> added to cart!' message here
-    //     // } elseif ($_POST['action-product-page'] === 'similar-item') {
-    //         // Get values then cache it
-    //         // setCaches();
-    //         // echo "SET CACHE SIMILAR ITEMS";
-    //         // echo "similar -item";
-    //     // } else {
-    //         // echo "CACHED VALUES RETRIEVED";
-
-    //         // Use cached values
-    //         // retrieveCaches();
-    //     }
-    // } else {
-    //     // Get values then cache it
-    //     // setCaches();
-    //     // echo "MC DUFFIN";
-    // }
 
 ?>
 <!DOCTYPE html>
@@ -147,19 +48,12 @@
                         Description:<br><br>
                         <?php echo $product['description']; ?>
                     </p>
-                    <!-- <div id="product-quantity-controls">
-                        <button id="btn-subtract-quantity">-</button>
-                        <p id="product-quantity">1</p>
-                        <button id="btn-add-quantity">+</button>
-                    </div> -->
                     <form method="POST" action="./core/action-add-to-cart.php">
                         <label for="input-product-quantity">Quantity:</label>
                         <input id="input-product-quantity" name="product-quantity" type="number" min="1" value="1">
-                        <!-- <input type="hidden" name="product-category" value="<?php //echo $product['category']; ?>"> -->
                         <input type="hidden" name="redirect" value="product-page.php">
                         <input type="hidden" name="product-id" value="<?= $product['id'] ?>">
                         <div id="transaction-buttons">
-                            <!-- <input type="hidden" name="action-product-page" value="add-to-cart"> -->
                             <button id="btn-add-to-cart" type="submit" <?= $buttonDisabled ?>>
                                 <?php echo $addToCartText; ?>
                             </button>
@@ -168,10 +62,6 @@
                             </button>
                         </div>
                     </form>
-                    <!-- <form method="POST" action="./checkout.php">
-                        <input type="hidden" name="action-product-page" value="buy-now">
-                        
-                    </form> -->
                     </div>
                 </div>
             </div>
