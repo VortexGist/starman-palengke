@@ -1,6 +1,6 @@
 TASKS:
 [] Checkout page 
-	[] make sections adjust to screen size accordingly
+	[/] make sections adjust to screen size accordingly
 [] Cart page 
 	[] add button to clear items
 	[] add feature to view product page
@@ -8,4 +8,4 @@ TASKS:
 [] Products page
 	[] add pagination at the bottom
 [] Navigation Bar
-	[] add logo
+	[/] add logo

@@ -79,12 +79,11 @@ main {
     margin: auto;
 }
 
-/******* NAVIGATION BAR *****/
-
+/******* LAYOUT *****/
 nav ul {
     display: inline-flex;
     list-style: none;
-    width: 50%;
+    /* width: 50%; */
     margin: 0px;
     margin-left: 2rem;
     padding: 0px;
@@ -92,7 +91,7 @@ nav ul {
 
 nav ul li {
     display: inline-block;
-    flex: 0 1 100px;
+    flex: 0 1 10px;
 }
 
 nav ul a {
@@ -105,7 +104,9 @@ nav ul a {
 }
 
 #logo {
-    
+    width: 80px;
+    height: auto;
+    /* margin-left: auto; */
 }
 
 header {
@@ -118,6 +119,7 @@ header .flex {
     width: 100%;
     flex-wrap: nowrap;
     justify-content: space-between;
+    /* gap:2rem; */
     padding: 0px;
     background-color: var(--theme-color-primary);
 }
@@ -125,12 +127,24 @@ header .flex {
 #title {
     text-align: right;
     display: inline-block;
-    width: 50%;
-    margin: 0px;
-    margin-right: 1.5rem;
+    width: fit-content;
+    margin: 0;
+    /* margin-right: 1.5rem; */
 }
 
-/******* FOOTER *****/
+#title-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+}
+#list-container {
+    display: flex;
+    gap:1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
 footer {
     background-color: var(--theme-color-primary);
@@ -191,3 +205,52 @@ nav ul li:hover,
 }
 
 /******* TOAST *****/
+
+
+
+
+
+/****** MOBILE ****/
+
+@media screen and (max-width:768px) {
+    #list-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    nav ul {
+        width: auto;
+        margin: 0;
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    nav ul li{
+        flex:none;
+    }
+    
+    .flex {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    #title-container {
+        display: flex;
+        width: fit-content;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+            }
+
+    #logo {
+        margin-left: 0;
+    }
+}
+
+/* #ul-container {
+    flex-direction: column;
+} */
