@@ -1,6 +1,6 @@
 <?php
 require_once './../core/script-page-gen.php';
-require_once './../core/script-products.php';
+// require_once './../core/script-products.php';
 require_once './../core/script-util.php';
 ?>
 

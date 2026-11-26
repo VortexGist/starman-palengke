@@ -1,6 +1,7 @@
 <?php
-require_once './core/script-page-gen.php';
-require_once './core/script-session.php';
+require_once './core/script-init.php';
+// require_once './core/script-page-gen.php';
+// require_once './core/script-session.php';
 
 $_SESSION['last-page'] = 'checkout';
 
@@ -65,8 +66,6 @@ $_SESSION['last-page'] = 'checkout';
             flex-direction: row;
             align-items: center;
         }
-
-
 
         #summary-items .item .name {
             max-width: 6rem;
@@ -195,9 +194,21 @@ $_SESSION['last-page'] = 'checkout';
             border-top: 1px solid black;
         }
 
+        @media screen and (max-width: 768px) {
+            #checkout-container {
+                flex-direction: column;
+            }
 
-        /* ====== Here's the changes I made ======= */   
-        
+            #customer-info,
+            #order-summary {
+                width: 100%;
+                border: none;
+                border-radius: 20px;
+            }
+        }
+
+        /* ====== Here's the changes I made ======= */
+
         /* @media screen and (max-width: 768px) {
             #checkout-container {
                 flex-direction: column;
@@ -243,8 +254,6 @@ $_SESSION['last-page'] = 'checkout';
             width: 100%;
             padding: 1rem;
            } */
-            
-        
     </style>
 </head>
 
@@ -282,64 +291,42 @@ $_SESSION['last-page'] = 'checkout';
             <div id="order-summary">
                 <h2>Order Summary</h2>
                 <div id="summary-items">
-                    <div class="item">
-                        <div class="image-container">
-                            <img src="./assets/banana.jpg" />
+                    <?php
+                    $cart = $_SESSION['cart'];
+                    $itemSubtotal = 0;
+                    $subtotal = 0;
+                    $total = 0;
+                    $shippingFee = 30;
+
+                    foreach ($cart as $id => $item) {
+                        $itemSubtotal = $item->product->price * $item->quantity;
+                        $subtotal += $itemSubtotal;
+                    ?>
+                        <div class="item">
+                            <div class="image-container">
+                                <img src="./assets/banana.jpg" />
+                            </div>
+                            <p class="name"><?= $item->product->name ?></p>
+                            <p class="price"><?= number_format($item->product->price, 2) ?></p>
+                            <p class="quantity">X <?= $item->quantity ?></p>
+                            <p class="subtotal">PHP <?= number_format($itemSubtotal, 2) ?></p>
                         </div>
-                        <p class="name">Banana</p>
-                        <p class="price">95.00</p>
-                        <p class="quantity">X 1</p>
-                        <p class="subtotal">PHP 95.00</p>
-                    </div>
-                    <div class="item">
-                        <div class="image-container">
-                            <img src="./assets/banana.jpg" />
-                        </div>
-                        <p class="name">Banana</p>
-                        <p class="price">95.00</p>
-                        <p class="quantity">X 1</p>
-                        <p class="subtotal">PHP 95.00</p>
-                    </div>
-                    <div class="item">
-                        <div class="image-container">
-                            <img src="./assets/banana.jpg" />
-                        </div>
-                        <p class="name">Banana</p>
-                        <p class="price">95.00</p>
-                        <p class="quantity">X 1</p>
-                        <p class="subtotal">PHP 95.00</p>
-                    </div>
-                    <div class="item">
-                        <div class="image-container">
-                            <img src="./assets/banana.jpg" />
-                        </div>
-                        <p class="name">Banana</p>
-                        <p class="price">95.00</p>
-                        <p class="quantity">X 1</p>
-                        <p class="subtotal">PHP 95.00</p>
-                    </div>
-                    <div class="item">
-                        <div class="image-container">
-                            <img src="./assets/banana.jpg" />
-                        </div>
-                        <p class="name">Banana</p>
-                        <p class="price">95.00</p>
-                        <p class="quantity">X 1</p>
-                        <p class="subtotal">PHP 95.00</p>
-                    </div>
+                    <?php
+                        $total += $shippingFee + $subtotal;
+                    } ?>
                 </div>
                 <div id="summary-details">
                     <div id="order-subtotal">
                         <p id="label-subtotal">SUBTOTAL:</p>
-                        <p id="subtotal">PHP 30.00</p>
+                        <p id="subtotal">PHP <?= number_format($subtotal, 2) ?></p>
                     </div>
                     <div class="fee-item">
                         <p class="fee-name">SHIPPING FEE</p>
-                        <p class="fee-amount">PHP 30.00</p>
+                        <p class="fee-amount">PHP <?= number_format($shippingFee, 2) ?></p>
                     </div>
                     <div id="order-total">
                         <p id="label-total">TOTAL:</p>
-                        <p id="total">PHP 99.00</p>
+                        <p id="total">PHP <?= number_format($total, 2) ?></p>
                     </div>
                 </div>
                 <p id="trust-details">

@@ -1,7 +1,8 @@
 <?php
-    require_once './core/script-page-gen.php';
-    require_once './core/script-session.php';
-    require_once './core/script-db.php';
+    require_once './core/script-init.php';
+    // require_once './core/script-page-gen.php';
+    // require_once './core/script-session.php';
+    // require_once './core/script-db.php';
 
     $_SESSION['last-page'] = 'admin';
 ?>

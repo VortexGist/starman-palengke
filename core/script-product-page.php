@@ -13,6 +13,8 @@ function generateSimilarItemIndices(array $categoryProducts, int $itemCount, int
     $chosenItemsIndices = [];
     $categorySize = sizeof($categoryProducts);
 
+    // var_dump($excludedIndex);
+
     // No similar items to show
     if ($categorySize === 1) {
         return $chosenItemsIndices;

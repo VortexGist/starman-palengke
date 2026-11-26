@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+function clearSession() {
+    setcookie(session_name(), '');
+}
 
 function setCacheValue(string $page, string $name, mixed $value)
 {

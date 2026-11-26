@@ -79,7 +79,7 @@ main {
     margin: auto;
 }
 
-/******* LAYOUT *****/
+/******* NAVIGATION BAR *****/
 
 nav ul {
     display: inline-flex;
@@ -104,6 +104,10 @@ nav ul a {
     padding: 1rem;
 }
 
+#logo {
+    
+}
+
 header {
     width: 100%;
 }
@@ -125,6 +129,8 @@ header .flex {
     margin: 0px;
     margin-right: 1.5rem;
 }
+
+/******* FOOTER *****/
 
 footer {
     background-color: var(--theme-color-primary);
