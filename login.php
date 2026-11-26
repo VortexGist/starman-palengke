@@ -2,6 +2,14 @@
     require_once './core/script-init.php';
 
     $_SESSION['last-page'] = 'login';
+
+    if (isset($_SESSION['error']['message'])) {
+        echo $_SESSION['error']['message'];
+    }
+
+    if (isset($_SESSION['success']['message'])) {
+        echo $_SESSION['success']['message'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,9 +54,9 @@
     <main>
         <div id="form-container">
             <h1>Login to Starman Palengke</h1>
-            <form method="POST" action="./action-login.php">
-                <input id="input-user-name" type="text" name="user-name" placeholder="Your username">
-                <input id="input-user-password" type="password" name="user-password" placeholder="Your password">
+            <form method="POST" action="./core/action-login.php">
+                <input id="input-user-name" type="text" name="user-name" placeholder="Your username" required>
+                <input id="input-user-password" type="password" name="user-password" placeholder="Your password" required>
                 <button type="submit">LOGIN</button>
             </form>
         </div>

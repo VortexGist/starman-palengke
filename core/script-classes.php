@@ -29,6 +29,17 @@ class CartItem
     }
 }
 
+class UserAcount {
+    public int $userID;
+}
+
+
+class Security {
+    public static function generateHash() {
+
+    }
+}
+
 
 class DB
 {
@@ -100,8 +111,8 @@ class DB
         ]);
         DB::createTableIfNotExists('accounts', [
             'id'       => 'INT PRIMARY KEY AUTO_INCREMENT',
-            'username' => 'VARCHAR(255) NOT NULL UNIQUE',
-            'password' => 'VARCHAR(255)',
+            'username' => 'VARCHAR(50) NOT NULL UNIQUE',
+            'password' => 'VARCHAR(255) NOT NULL',
             'role'     => 'enum(\'customer\', \'admin\')',
         ]);
         DB::createTableIfNotExists('orders', [
@@ -117,6 +128,7 @@ class DB
             'quantity'   => 'VARCHAR(255)',
             'role'       => 'enum(\'customer\', \'admin\')',
         ]);
+
 
         DB::addCategory("meat");
         DB::addCategory("vegetable");
@@ -176,6 +188,14 @@ class DB
                 // echo "added " . $product->name;
             }
         }
+    }
+
+    public static function getAccountByID() {
+
+    }
+
+    public static function addAccount(string $name, string $password) {
+
     }
 
     /**

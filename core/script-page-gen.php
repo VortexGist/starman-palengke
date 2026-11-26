@@ -13,6 +13,15 @@ function generateHeader()
                     <li><a href="./cart.php">Cart</a></li>
                 </ul>
             </nav>
+            <p id="user">
+            <?php 
+                if (isset($_SESSION['user'])) {
+                    echo 'Welcome,  '. $_SESSION['user']['name'];
+                } else {
+                    echo 'Not signed in';
+                }
+            ?>        
+            </p>
             <img id="logo" src="./assets/logo.png">
             <h1 id="title">Starman Palengke</h1>
         </div>

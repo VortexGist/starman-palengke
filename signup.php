@@ -2,6 +2,10 @@
     require_once './core/script-init.php';
 
     $_SESSION['last-page'] = 'signup';
+    
+    if (isset($_SESSION['error']['message'])) {
+        echo $_SESSION['error']['message'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,10 +50,10 @@
     <main>
         <div id="form-container">
             <h1>Create Starman Account</h1>
-            <form method="POST" action="./action-signup.php">
-                <input id="input-user-name" type="text" name="user-name" placeholder="Create username">
-                <input id="input-user-password" type="password" name="user-password" placeholder="Create password">
-                <input id="input-user-confirm-password" type="password" name="user-confirm-password" placeholder="Confirm password">
+            <form method="POST" action="./core/action-signup.php">
+                <input id="input-user-name" type="text" name="user-name" placeholder="Create username" required>
+                <input id="input-user-password" type="password" name="user-password" placeholder="Create password" required>
+                <input id="input-user-confirm-password" type="password" name="user-confirm-password" placeholder="Confirm password" required>
                 <button type="submit">CREATE ACCOUNT</button>
             </form>
         </div>
