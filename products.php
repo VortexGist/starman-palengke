@@ -55,8 +55,9 @@ require_once './core/script-init.php';
                     // var_dump($product['id']);
                 ?>
                 <div class="card">
-                    <form method="POST" action="./product-page.php">
+                    <form method="POST" action="./core/action-generate-similar-products.php">
                         <input type="hidden" name="product-id" value="<?php echo $product['id']; ?>">
+                        <input type="hidden" name="product-category" value="<?php echo $product['category']; ?>">
                         <!-- <input type="hidden" name="product-price" value="<?php echo $product->price; ?>">
                         <input type="hidden" name="product-image" value="<?php echo $product->image; ?>">
                         <input type="hidden" name="product-category" value="<?php echo $category; ?>">
@@ -70,7 +71,7 @@ require_once './core/script-init.php';
                     <p class="name"><?php echo $product['name']; ?></p>
                     <p class="price"><?php echo number_format($product['price'], 2); ?> PHP/<?php echo $product['price_unit']; ?>
                     </p>
-                    <form method="POST" action="./cart.php">
+                    <form method="POST" action="./core/action-add-to-cart.php">
                         <input type="hidden" name="product-id" value="<?php echo $product['id']; ?>">
                         <!-- <input type="hidden" name="product-name" value="<?php echo $product->name; ?>">
                         <input type="hidden" name="product-price" value="<?php echo $product->price; ?>">
