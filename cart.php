@@ -10,14 +10,14 @@
 
     $_SESSION['last-page'] = 'cart';
 
-    if ($_SERVER['http-request-method'] === 'POST') {
-        if (isset($_POST['action-products'])) {
-            if ($_POST['action-products'] === 'add-to-cart') {
-                addToCart((int) $_POST['product-id'], 1);
-                // toast '<name> added to cart!' message here
-            }
-        }
-    }
+    // if ($_SERVER['http-request-method'] === 'POST') {
+    //     if (isset($_POST['action-products'])) {
+    //         if ($_POST['action-products'] === 'add-to-cart') {
+    //             addToCart((int) $_POST['product-id'], 1);
+    //             // toast '<name> added to cart!' message here
+    //         }
+    //     }
+    // }
 
 ?>
 <!DOCTYPE html>
@@ -44,18 +44,18 @@
             }?>
             <div id="cart-items">
                 <?php
-                    $totalCost = 0;
+                    $total = 0.0;
 
                     foreach ($_SESSION['cart'] as $id => $item) {
-                        if ($item === null) {
-                            continue;
-                        }
+                        // if ($item === null) {
+                        //     continue;
+                        // }
 
                         // $product = $item->product;
                         // if ($product === null) continue;
                         // calculate total
-                        $product    = DB::getProductByID($item->productID);
-                        $totalCost += $product['price'];
+                        $product  = DB::getProductByID($item->productID);
+                        $total   += (float) $product['price'] * $item->quantity;
                     ?>
                     <div class="item">
                         <div class="image-container"><img src="./assets/<?php echo $product['image'] ?>"></div>
@@ -72,47 +72,16 @@
                         </p>
                         <button class="btn-remove-item">REMOVE</button>
                     </div>
-                <?php }?>
-
-                <!-- <?php
-                         $totalCost = 0;
-
-                         foreach ($_SESSION['cart'] as $item) {
-                             if ($item === null) {
-                                 continue;
-                             }
-
-                             $product = $item->product;
-                             if ($product === null) {
-                                 continue;
-                             }
-
-                             // calculate total
-                         $totalCost += $product->price;
-                         ?> -->
-                <!-- <div class="item">
-                        <div class="image-container"><img src="./assets/<?php echo $product->image ?>"></div>
-                        <p class="description"><?php echo $product->name; ?></p>
-                        <p class="price"><?php echo number_format($product->price, 2); ?>
-                            PHP/<?php echo $product->priceUnit; ?></p>
-                        <div class="quantity-controls">
-                            <button class="btn-add-item-quantity">+</button>
-                            <p>1</p>
-                            <button class="btn-subtract-item-quantity">-</button>
-                        </div>
-                        <p class="subtotal">
-                            <?php echo $product->price * $item->quantity; ?> PHP
-                        </p>
-                        <button class="btn-remove-item">REMOVE</button>
-                    </div> -->
-                <!-- <?php }?> -->
+                <?php
+                    }
+                ?>
             </div>
             <div id="cart-details">
                 <div id="cart-total-label">
                     <p>TOTAL:</p>
                 </div>
                 <div id="cart-total-amount">
-                    <p><?php echo number_format($totalCost, 2); ?> PHP</p>
+                    <p><?php echo number_format($total, 2); ?> PHP</p>
                 </div>
             </div>
             <form method="POST" action="./checkout.php">
