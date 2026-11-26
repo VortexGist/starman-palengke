@@ -21,9 +21,9 @@ $_SESSION['product']['category'] = $_POST['product-category'];
 $_SESSION['product']['quantity'] = $_POST['product-quantity'];
 
 if (isset($_POST['redirect'])) {
-	header('Location: /'.PROJECT_FOLDER. '/'.$_POST['redirect']);
+	header('Location: /'.PROJECT_FOLDER.$_POST['redirect']);
 	exit;
 }
 
-header('Location: /'.PROJECT_FOLDER.'/product-page.php');
+header('Location: /'.PROJECT_FOLDER.'product-page.php');
 exit;
