@@ -13,8 +13,10 @@ function generateHeader()
                     <li><a href="./cart.php">Cart</a></li>
                 </ul>
             </nav>
+        <div id="title-container"> 
             <img id="logo" src="./assets/logo.png">
             <h1 id="title">Starman Palengke</h1>
+        </div>
         </div>
     </header>
 <?php
