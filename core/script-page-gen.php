@@ -25,6 +25,6 @@ function generateFooter()
 ?>
     <footer>
         <p class="copyright">&#169;2026 Calisura & Francisco. All rights reserved.</p>
-    </footer>;
+    </footer>
 <?php
 }
