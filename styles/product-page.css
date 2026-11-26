@@ -124,3 +124,7 @@
     border: none;
     background-color: transparent;
 }
+
+#input-product-quantity {
+    padding: 0.5rem;
+}
