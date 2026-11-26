@@ -3,7 +3,8 @@
 function loadLocalEnvironment($filepath)
 {
     if (! file_exists($filepath)) {
-        die('.env file not found');
+        // die('.env file not found');
+        return;
     }
 
     $lines = file($filepath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
