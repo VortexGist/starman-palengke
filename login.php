@@ -58,6 +58,7 @@
                 <input id="input-user-name" type="text" name="user-name" placeholder="Your username" required>
                 <input id="input-user-password" type="password" name="user-password" placeholder="Your password" required>
                 <button type="submit">LOGIN</button>
+                <p>No account yet? <a href="./signup.php">Create one here</a></p>
             </form>
         </div>
     </main>

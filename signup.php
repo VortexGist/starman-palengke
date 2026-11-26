@@ -55,6 +55,7 @@
                 <input id="input-user-password" type="password" name="user-password" placeholder="Create password" required>
                 <input id="input-user-confirm-password" type="password" name="user-confirm-password" placeholder="Confirm password" required>
                 <button type="submit">CREATE ACCOUNT</button>
+                <p>Already have an account? <a href="./login.php">Login one here</a></p>
             </form>
         </div>
     </main>
