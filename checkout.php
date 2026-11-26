@@ -256,7 +256,7 @@ $_SESSION['last-page'] = 'checkout';
             <div id="customer-info">
                 <h2>Customer Info</h2>
                 <div id="customer-info-form-container">
-                    <form method="POST" action="./checkout.php">
+                    <form method="POST" action="./core/action-checkout.php">
                         <label>Name: </label>
                         <input type="text" name="customer-name" required>
                         <label>Contact Number (Optional): </label>
@@ -265,8 +265,8 @@ $_SESSION['last-page'] = 'checkout';
                         <input type="email" name="customer-contact-email">
                         <label>Delivery Address: </label>
                         <input type="text" name="delivery-address" required>
-                        <label>Delivery Method: </label>
-                        <input type="text" name="delivery-address" disabled>
+                        <!-- <label>Delivery Method: </label>
+                        <input type="text" name="delivery-address" disabled> -->
                         <label for="payment-method">Payment Method: </label>
                         <select name="payment-method" required>
                             <option value="null" selected>Select Payment Method</option>
@@ -282,7 +282,7 @@ $_SESSION['last-page'] = 'checkout';
             <div id="order-summary">
                 <h2>Order Summary</h2>
                 <div id="summary-items">
-                    <?php 
+                    <?php
                         $total = 0.0;
                         $itemSubtotal = 0.0;
                         $subtotal = 0.0;

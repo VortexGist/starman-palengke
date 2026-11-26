@@ -25,12 +25,12 @@ MAIN FEATURES:
     [] "buy now" function
     [/] auto-generate similar items function
 [] cart page
-    [] checkout function
+    [/] checkout function
     [] add "view product" button
         [] function
         [] letter "I" for "info"
-    [] add "remove from cart" button
-        [] function
+    [/] add "remove from cart" button
+        [/] function
         [/] letter "X" for "remove"
     [/] add cart item quantity column
     [] add button to clear cart items
