@@ -42,17 +42,13 @@
                 <p id="empty-cart-message">The cart is empty. Check out the products and try adding them to the cart. </p>
             <?php
             }?>
+
+            <form method="POST" action="./checkout.php">
             <div id="cart-items">
                 <?php
                     $total = 0.0;
 
-                    foreach ($_SESSION['cart'] as $id => $item) {
-                        // if ($item === null) {
-                        //     continue;
-                        // }
-
-                        // $product = $item->product;
-                        // if ($product === null) continue;
+                    foreach ($_SESSION['cart'] as $i => $item) {
                         // calculate total
                         $product  = DB::getProductByID($item->productID);
                         $total   += (float) $product['price'] * $item->quantity;
@@ -63,14 +59,12 @@
                         <p class="price"><?php echo number_format($product['price'], 2); ?>
                             PHP/<?php echo $product['price_unit']; ?></p>
                         <div class="quantity-controls">
-                            <button class="btn-add-item-quantity">+</button>
-                            <p><?php echo $item->quantity; ?></p>
-                            <button class="btn-subtract-item-quantity">-</button>
+                            <input class="input-item-quantity" type="number" name="item-quantity-<?= $i ?>" min="1" value="<?= $item->quantity ?? 1 ?>">
                         </div>
                         <p class="subtotal">
                             <?php echo (float) $product['price'] * $item->quantity; ?> PHP
                         </p>
-                        <button class="btn-remove-item">REMOVE</button>
+                        <button class="btn-remove-item" type="submit" name="remove-item-id" value="<?= $item->productID?>" formaction="./core/action-remove-cart-item.php">REMOVE</button>
                     </div>
                 <?php
                     }
@@ -84,8 +78,6 @@
                     <p><?php echo number_format($total, 2); ?> PHP</p>
                 </div>
             </div>
-            <form method="POST" action="./checkout.php">
-
                 <button id="btn-checkout" type="submit">CHECKOUT</button>
             </form>
         </div>

@@ -21,6 +21,8 @@ function addToCart(int $productID, int $quantity)
         }
     }
 
+    // $_SESSION['cart'][$productID] = ;
+
     array_push($_SESSION['cart'], new CartItem($productID, $quantity));
     // $product = DB::getProductByID($productID);
     // global $products;
@@ -49,10 +51,11 @@ function removeFromCartByIndex(int $index)
     array_splice($_SESSION['cart'], $index, $index);
 }
 
-function removeFromCart(Product $product)
+function removeFromCart(int $productID)
 {
+    // unset($_SESSION['cart']);
     $_SESSION['cart'] = array_filter(
         $_SESSION['cart'],
-        fn($p) => $p !== $product
+        fn($p) => $p->productID !== $productID
     );
 }
