@@ -42,19 +42,9 @@
     }
 
     // $_SESSION['item-quantity'] = 0;
-
     $addToCartText = $_SESSION['add-to-cart']['button-content'] ?? 'ADD TO CART';
 
-
-
     $product = DB::getProductByID((int) $_SESSION['product']['id']);
-
-    $buttonDisabled = '';
-
-    if (isset($_SESSION['add-to-cart']['button-content']) && 
-        $_SESSION['add-to-cart']['button-content'] === 'ADDED TO CART') {
-        $buttonDisabled = 'disabled';
-    }
     
     // function setCaches()
     // {
@@ -147,31 +137,28 @@
                         Description:<br><br>
                         <?php echo $product['description']; ?>
                     </p>
-                    <!-- <div id="product-quantity-controls">
+                    <div id="product-quantity-controls">
                         <button id="btn-subtract-quantity">-</button>
                         <p id="product-quantity">1</p>
                         <button id="btn-add-quantity">+</button>
-                    </div> -->
-                    <form method="POST" action="./core/action-add-to-cart.php">
-                        <label for="input-product-quantity">Quantity:</label>
-                        <input id="input-product-quantity" name="product-quantity" type="number" min="1" value="1">
-                        <!-- <input type="hidden" name="product-category" value="<?php //echo $product['category']; ?>"> -->
-                        <input type="hidden" name="redirect" value="product-page.php">
-                        <input type="hidden" name="product-id" value="<?= $product['id'] ?>">
-                        <div id="transaction-buttons">
+                    </div>
+                    
+                    <div id="transaction-buttons">
+                        <form method="POST" action="./core/action-add-to-cart.php">
+                            <input type="number" min="1" value="1">
+                            <!-- <input type="hidden" name="product-category" value="<?php //echo $product['category']; ?>"> -->
+                            <input type="hidden" name="redirect" value="product-page.php">
+                            <input type="hidden" name="product-id" value="<?= $product['id'] ?>">
+
                             <!-- <input type="hidden" name="action-product-page" value="add-to-cart"> -->
-                            <button id="btn-add-to-cart" type="submit" <?= $buttonDisabled ?>>
+                            <button id="btn-add-to-cart" type="submit">
                                 <?php echo $addToCartText; ?>
                             </button>
-                            <button id="btn-buy-now" type="submit" formaction='./checkout.php'>
-                                BUY NOW
-                            </button>
-                        </div>
-                    </form>
-                    <!-- <form method="POST" action="./checkout.php">
-                        <input type="hidden" name="action-product-page" value="buy-now">
-                        
-                    </form> -->
+                        </form>
+                        <form method="POST" action="./checkout.php">
+                            <!-- <input type="hidden" name="action-product-page" value="buy-now"> -->
+                            <button id="btn-buy-now" type="submit">BUY NOW</button>
+                        </form>
                     </div>
                 </div>
             </div>
