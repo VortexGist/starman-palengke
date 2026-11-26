@@ -46,7 +46,7 @@
     <main>
         <div id="form-container">
             <h1>Create Starman Account</h1>
-            <form method="POST" action="./action-login.php">
+            <form method="POST" action="./action-signup.php">
                 <input id="input-user-name" type="text" name="user-name" placeholder="Create username">
                 <input id="input-user-password" type="password" name="user-password" placeholder="Create password">
                 <input id="input-user-confirm-password" type="password" name="user-confirm-password" placeholder="Confirm password">
