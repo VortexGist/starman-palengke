@@ -13,6 +13,7 @@ function generateHeader()
                     <li><a href="./cart.php">Cart</a></li>
                 </ul>
             </nav>
+        <div id="title-container"> 
             <p id="user">
             <?php 
                 if (isset($_SESSION['user'])) {
@@ -24,6 +25,7 @@ function generateHeader()
             </p>
             <img id="logo" src="./assets/logo.png">
             <h1 id="title">Starman Palengke</h1>
+        </div>
         </div>
     </header>
 <?php
